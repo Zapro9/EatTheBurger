@@ -8,10 +8,9 @@
 					</pre>
 				</div>
 				<div class="col-md-3 text-center">
-					<form class="devour-form">
-						<input input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
-						<button type="submit" class="btn btn-default" style="margin: 0px 0px 25px;">Devour it!</button>
-					</form>
+					{{!-- <form class="devour-form"> --}}
+						<button type="submit" class="btn btn-primary" id="text-devour-button">Devour it</button>
+					{{!-- </form> --}}
 				</div>
 				{{/unless}}
 			  {{/each}}
@@ -38,5 +37,24 @@
 		</div>
 	</div>
 </div>
+
+<script>$(document).ready(function() {
+    
+    // $(".devour-form").on("submit", function(event) {
+      $("#text-devour-button").on("click", function(event) {
+
+      // event.preventDefault();
+        alert("Hi")
+      var burger_id = $(this).children(".burger_id").val();
+      console.log(burger_id);
+      // $.ajax({
+      //   method: "PUT",
+      //   url: "/burgers/" + burger_id
+      // }).then(function(data) {
+      //   location.reload();
+      // });
+  
+    });
+  });</script>
 
 
