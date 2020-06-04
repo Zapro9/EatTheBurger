@@ -9,7 +9,7 @@
 				</div>
 				<div class="col-md-3 text-center">
 					{{!-- <form class="devour-form"> --}}
-						<button type="submit" class="btn btn-primary" id="text-devour-button" value=false>Devour it</button>
+						<button type="submit" class="btn btn-primary text-devour-button" data-id="{{this.id}}" value="{{this.devoured}}">Devour it</button>
 					{{!-- </form> --}}
 				</div>
 				{{/unless}}
@@ -39,11 +39,15 @@
 </div>
 
 <script>
-	document.addEventListener("click", function(event) {
-		const clicked = event.target.value;
-		console.log(clicked);
+	$(document).on("click", ".text-devour-button", function() {
+		var clicked = $(this).val();
+		var id = $(this).data("id");
+		var updateDevour = {devoured: 1};
+		$.ajax("/burgers/" + id, {type: "PUT", data: updateDevour}).then(function() {
+			console.log("burger devoured")
+			location.reload();
+		})
 	})
-
 </script>
-
+	
 
